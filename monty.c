@@ -1,6 +1,7 @@
 #include "monty.h"
 #include <stdio.h>
-#include <cstdio.h>
+#include <ctype.h>
+#include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
 
@@ -14,6 +15,9 @@
 int main(int argc, char *argv[])
 {
         FILE *monty_file;
+	char line[MAX_LINE_LENGHT];
+	int line_number = 0;
+	size_t len;
 
         if (argc != 2)
         {
@@ -28,3 +32,19 @@ int main(int argc, char *argv[])
                 fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
                 exit(EXIT_FAILURE);
         }
+
+	while (fgets(line, sizeof(line), monty_file) != NULL)
+	{
+		line_number++;
+		len = strlen(line);
+
+		if (len > 0 && line[len - 1] == '\n')
+		{
+			line[len - 1] = '\0';
+		}
+	}
+
+	fclose(monty_file);
+
+	return (0);
+}
