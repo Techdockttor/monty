@@ -1,20 +1,17 @@
 #include "monty.h"
 
-
 /**
-* free_stack -  doubly linked list free
-* @head: the stack head
+ * f_stack -  the top will be printed
+ * @head:head of  stack
+ * @counter: line_number
+ * Return: no return
 */
 
-void free_stack(stack_t *head)
-{
-	stack_t *aux;
 
-	aux = head;
-	while (head)
-	{
-		aux = head->next;
-		free(head);
-		head = aux;
-	}
+
+void f_stack(stack_t **head, unsigned int counter)
+{
+	(void)head;
+	(void)counter;
+	bus.lifi = 0;
 }
